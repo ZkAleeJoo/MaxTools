@@ -1,0 +1,6 @@
+.mvn/
+target/
+.vscode/
+src/test/
+pom.xml
+.github/

@@ -1,0 +1,608 @@
+#   _____                 ____  __.__                
+#  /     \ _____  ___  __|    |/ _|__| ____    ____  
+# /  \ /  \\__  \ \  \/  /      < |  |/    \  / ___\ 
+# /    Y    \/ __ \_>    <|    |  \|  |   |  \/ /_/  >
+# \____|__  (____  /__/\_ \____|__ \__|___|  /\___  / 
+#        \/     \/      \/       \/       \//_____ /  
+
+# Si tienes alguna pregunta o problema, puedes preguntar en el servidor de soporte: https://discord.gg/Vr46JHm2kd
+# Recuerda no eliminar ninguna línea de código.
+# Para problemas, errores, ideas o sugerencias puedes hacerlo en el servidor de Discord.
+# Esta plantilla interna se copia a /plugins/MaxTools/language_profiles/menus_es.yml si el perfil no existe.
+# Edita language_profiles/menus_es.yml para personalizar los menús en español.
+# --------------------------------------------------
+#  Textos del Menú
+# --------------------------------------------------
+menu-texts:
+  evolution-hub:
+    title: '&8Menú de Evolución'
+    tool-item:
+      title: '&b{tool_name}'
+      lore:
+      - '&7Nivel actual: &f{current_level}'
+      - '&7Siguiente nivel: &f{next_level}'
+      - '&7Uso: &f{usage}'
+      - '&7Objetivo: &f{target}'
+      - '&7Hitos: &f{unlocked_milestones}&7/&f{total_milestones}'
+      - '&7Habilidades: &f{unlocked_abilities}&7/&f{total_abilities}'
+
+# --------------------------------------------------
+#  Sonidos del Menú
+# --------------------------------------------------
+menu-sounds:
+  enabled: true
+  open:
+    sound: UI_BUTTON_CLICK
+    volume: 1.0
+    pitch: 1.0
+  page-next:
+    sound: ITEM_BOOK_PAGE_TURN
+    volume: 1.0
+    pitch: 1.1
+  page-prev:
+    sound: ITEM_BOOK_PAGE_TURN
+    volume: 1.0
+    pitch: 0.9
+  open-abilities:
+    sound: BLOCK_ENCHANTMENT_TABLE_USE
+    volume: 1.0
+    pitch: 1.0
+  open-stats:
+    sound: BLOCK_COMPARATOR_CLICK
+    volume: 1.0
+    pitch: 1.0
+  back:
+    sound: UI_BUTTON_CLICK
+    volume: 1.0
+    pitch: 0.8
+  error:
+    sound: ENTITY_VILLAGER_NO
+    volume: 1.0
+    pitch: 1.0
+
+# --------------------------------------------------
+#  Diseños del Menú
+# --------------------------------------------------
+menu-layouts:
+  theme:
+    colors:
+      locked: '&#EF4444'
+      current: '&#F59E0B'
+      unlocked: '&#FC402B'
+      common: '&#9CA3AF'
+      rare: '&#3B82F6'
+      epic: '&#A855F7'
+      mythic: '&#EC4899'
+      legendary: '&#FCD34D'
+    styles:
+      stat-emphasis: '&l'
+      subtle: '&7'
+  milestone-tree:
+    title: '&#3B82F6Hitos &8(&#3B82F6{page}&8/&#3B82F6{pages}&8) &7Nivel: &f{tier}'
+    size: 54
+    slots:
+    - 10
+    - 11
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 28
+    - 29
+    - 30
+    - 31
+    - 32
+    - 33
+    - 34
+    items:
+      unlocked:
+        material: LIME_STAINED_GLASS_PANE
+        custom-model-data: 0
+        title: '&#FC402BDesbloqueado &8» &#FC402B{blocks}'
+        lore:
+        - '&7Estado: &#FC402B{state}'
+        - '&7Bloques requeridos: &f{blocks}'
+        - '&7Recompensa exacta: &f{reward}'
+        - '&7Tier: &f{tier}'
+        - '&7Siguiente recompensa: &f{next_reward}'
+        - ''
+        - '&#FC402BClick para abrir detalles'
+        rarity-variants:
+          legendary:
+            material: GOLD_BLOCK
+      current:
+        material: YELLOW_STAINED_GLASS_PANE
+        custom-model-data: 0
+        title: '&#F59E0BObjetivo Actual &8» &#F59E0B{blocks}'
+        lore:
+        - '&7Estado: &#F59E0B{state}'
+        - '&7Bloques requeridos: &f{blocks}'
+        - '&7Bloques restantes: &f{remaining_blocks}'
+        - '&7Siguiente recompensa: &f{next_reward}'
+        - '&7Recompensa exacta: &f{reward}'
+        - ''
+        - '&#F59E0BClick para abrir detalles'
+        progress-variants:
+          early:
+            min-percent: 0
+            max-percent: 34
+            material: ORANGE_STAINED_GLASS_PANE
+          mid:
+            min-percent: 35
+            max-percent: 74
+            material: YELLOW_STAINED_GLASS_PANE
+          near:
+            min-percent: 75
+            max-percent: 100
+            material: LIME_STAINED_GLASS_PANE
+      locked:
+        material: RED_STAINED_GLASS_PANE
+        custom-model-data: 0
+        title: '&#EF4444Bloqueado &8» &#EF4444{blocks}'
+        lore:
+        - '&7Estado: &#EF4444{state}'
+        - '&7Bloques requeridos: &f{blocks}'
+        - '&7Bloques restantes: &f{remaining_blocks}'
+        - '&7Tier: &f{tier}'
+        - '&7Recompensa exacta: &f{reward}'
+        - ''
+        - '&#EF4444Click para abrir detalles'
+        state-variants:
+          locked:
+            material: RED_STAINED_GLASS_PANE
+    materials:
+      filler:
+        material: BLACK_STAINED_GLASS_PANE
+        custom-model-data: 0
+        slots:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 17
+        - 18
+        - 26
+        - 27
+        - 35
+        - 36
+        - 37
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
+        - 45
+        - 46
+        - 47
+        - 48
+        - 49
+        - 50
+        - 51
+        - 52
+        - 53
+        title: '&r'
+        lore: []
+      previous-page:
+        material: ARROW
+        custom-model-data: 0
+        slots:
+        - 45
+        title: '&#F59E0BPágina Anterior'
+        lore:
+        - '&7Página actual: &#F59E0B{page}&8/&#F59E0B{pages}'
+      next-page:
+        material: ARROW
+        custom-model-data: 0
+        slots:
+        - 53
+        title: '&#F59E0BPágina Siguiente'
+        lore:
+        - '&7Página actual: &#F59E0B{page}&8/&#F59E0B{pages}'
+      abilities-menu:
+        material: NETHER_STAR
+        custom-model-data: 0
+        slots:
+        - 49
+        title: '&#8B5CF6Habilidades Especiales'
+        lore:
+        - '&7Abrir panel de estado de habilidades'
+      stats-menu:
+        material: COMPARATOR
+        custom-model-data: 0
+        slots:
+        - 50
+        title: '&#EC4899Estadísticas de Herramienta'
+        lore:
+        - '&7Abrir métricas detalladas de progresión'
+  milestone-detail:
+    title: '&#F59E0BDetalle de Hito &8» &#F59E0B{blocks}'
+    size: 27
+    items:
+      info:
+        slot: 13
+        material: BOOK
+        custom-model-data: 0
+        title: '&#FCD34DHito {blocks}'
+        lore:
+        - '&7Bloques requeridos: &f{blocks}'
+        - '&7Recompensa exacta: &f{reward}'
+        - '&7Habilidades desbloqueadas: &f{abilities}'
+        - '&7Encantamiento: &#60A5FA{enchantment} &#FCD34D{level}'
+    materials:
+      filler:
+        material: BLACK_STAINED_GLASS_PANE
+        slots:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 14
+        - 15
+        - 16
+        - 17
+        - 18
+        - 19
+        - 20
+        - 21
+        - 22
+        - 23
+        - 24
+        - 25
+        - 26
+        title: '&r'
+        lore: []
+      back:
+        material: BARRIER
+        slots:
+        - 18
+        title: '&#EF4444Volver'
+        lore:
+        - '&7Regresar al árbol de hitos'
+  tool-stats:
+    title: '&8Nivel: &f{tier} &8Sigue: &f{next_reward}'
+    size: 54
+    ability-slots:
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    progress-bars:
+      milestones:
+        length: 12
+        filled-char: '&a█'
+        empty-char: '&7░'
+      abilities:
+        length: 12
+        filled-char: '&b█'
+        empty-char: '&7░'
+    materials:
+      summary:
+        material: BOOK
+        custom-model-data: 0
+        slots:
+        - 13
+        title: '&#3B82F6Resumen de Progreso'
+        lore:
+        - '&7Uso: &#3B82F6{usage}&8/&#3B82F6{target}'
+        - '&7Bloques restantes: &#F59E0B{remaining_blocks}'
+        - '&7Tier: &f{tier}'
+        - '&7Hitos: &#3B82F6{milestones_unlocked}&8/&#3B82F6{milestones_total} &8(&#3B82F6{milestones_percent}%&8)'
+        - '&7{milestones_bar}'
+        - '&7Habilidades: &#3B82F6{abilities_unlocked}&8/&#3B82F6{abilities_total} &8(&#3B82F6{abilities_percent}%&8)'
+        - '&7{abilities_bar}'
+        - '&7Activaciones totales: &#F59E0B{activations_total}'
+        - '&7Siguiente recompensa: &f{next_reward}'
+        state-variants:
+          locked:
+            material: WRITABLE_BOOK
+          current:
+            material: BOOK
+          unlocked:
+            material: ENCHANTED_BOOK
+        rarity-variants:
+          legendary:
+            custom-model-data: 0
+      ability:
+        material: BLAZE_POWDER
+        custom-model-data: 0
+        title: '&#F59E0B{ability}'
+        lore:
+        - '&7Activaciones: &f{ability_activations}'
+        - '&7Participación relativa: &#F59E0B{ability_percent}%'
+        - '&7Tier: &f{tier}'
+        progress-variants:
+          low:
+            min-percent: 0
+            max-percent: 24
+            material: GUNPOWDER
+          medium:
+            min-percent: 25
+            max-percent: 69
+            material: BLAZE_POWDER
+          high:
+            min-percent: 70
+            max-percent: 100
+            material: NETHER_STAR
+      filler:
+        material: BLACK_STAINED_GLASS_PANE
+        slots:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 14
+        - 15
+        - 16
+        - 17
+        - 18
+        - 26
+        - 27
+        - 28
+        - 29
+        - 30
+        - 31
+        - 32
+        - 33
+        - 34
+        - 35
+        - 36
+        - 37
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
+        - 45
+        - 46
+        - 47
+        - 48
+        - 50
+        - 51
+        - 52
+        - 53
+        title: '&r'
+        lore: []
+      back:
+        material: BARRIER
+        slots:
+        - 49
+        title: '&#EF4444Volver'
+        lore:
+        - '&7Regresar al árbol de hitos'
+  abilities:
+    title: '&#8B5CF6Habilidades Especiales'
+    size: 54
+    slots:
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    show-locked: true
+    cooldown-time-format: seconds # seconds | mm:ss
+    states:
+      active: '&#FC402BACTIVO'
+      cooldown: '&#F59E0BEN RECARGA'
+      blocked: '&#EF4444BLOQUEADO'
+    items:
+      active:
+        material: LIME_DYE
+        custom-model-data: 0
+        title: '&#FC402B{ability}'
+        lore:
+        - '&7Estado: {state}'
+        - '&7Desbloqueado: &#FC402B{unlocked}'
+        - '&7Bloques requeridos: &f{required_blocks}'
+      cooldown:
+        material: CLOCK
+        custom-model-data: 0
+        title: '&#F59E0B{ability}'
+        lore:
+        - '&7Estado: {state}'
+        - '&7Recarga: &#F59E0B{cooldown}'
+        - '&7Bloques requeridos: &f{required_blocks}'
+      blocked:
+        material: BARRIER
+        custom-model-data: 0
+        title: '&#EF4444{ability}'
+        lore:
+        - '&7Estado: {state}'
+        - '&7Desbloqueado: &#EF4444{unlocked}'
+        - '&7Bloques requeridos: &f{required_blocks}'
+    materials:
+      filler:
+        material: BLACK_STAINED_GLASS_PANE
+        custom-model-data: 0
+        slots:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+        - 12
+        - 13
+        - 14
+        - 15
+        - 16
+        - 17
+        - 18
+        - 26
+        - 27
+        - 28
+        - 29
+        - 30
+        - 31
+        - 32
+        - 33
+        - 34
+        - 35
+        - 36
+        - 37
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
+        - 45
+        - 46
+        - 47
+        - 48
+        - 50
+        - 51
+        - 52
+        - 53
+        title: '&r'
+        lore: []
+      back:
+        material: BARRIER
+        custom-model-data: 0
+        slots:
+        - 49
+        title: '&#EF4444Volver'
+        lore:
+        - '&7Regresar al árbol de hitos'
+  language-menu:
+    title: '&#6A5ACDLanguage &8| &#6A5ACDIdioma'
+    size: 27
+    options:
+      english:
+        slot: 11
+        title: '&#4FACFE&lEnglish'
+        texture: 'http://textures.minecraft.net/texture/52504ecd6d0a61b32a419f208af76eebb19e9bc40f85b06bfabdbe51aed43de'
+        lore:
+        - ''
+        - '&#A1C4FD➤ &fSwitch the plugin language to &#4FACFEEnglish'
+        - '&#C2E9FB➤ &7Swaps config + menus by language profile'
+        - '&#C2E9FB➤ &7and keeps custom profile per language'
+        - ''
+        - '&#7F8C8DYou can change this anytime'
+        - ''
+      spanish:
+        slot: 15
+        title: '&#F7971E&lEspañol'
+        texture: 'http://textures.minecraft.net/texture/91beec74e31a2c03dccc8083d056bf8fc1b376505fc29584cc1fefb3387b2245'
+        lore:
+        - '' 
+        - '&#FDC830➤ &fCambie el idioma del complemento a &#F7971EEspañol'
+        - '&#C2E9FB➤ &7Intercambia config + menús por perfil de idioma'
+        - '&#C2E9FB➤ &7y mantiene perfil personalizado por idioma'
+        - ''
+        - '&#7F8C8DPuedes cambiar esto en cualquier momento'
+        - ''
+  evolution-hub:
+    title: '&#A855F7Hub de Evolución de Herramientas'
+    size: 27
+    tool-info-slot: 13
+  admin-preview:
+    title: '&#EF4444Vista Previa Admin'
+    size: 54
+    slots:
+      localized-tools: 10
+      localized-enchantments: 12
+      progress-bars: 14
+      ability-states: 16
+      evolution-lore: 31
+    border:
+      material: BLACK_STAINED_GLASS_PANE
+      title: '&r'
+    items:
+      localized-tools:
+        material: NETHERITE_PICKAXE
+        title: '&#3B82F6&lNombres de Herramientas Localizados'
+        lore:
+        - '&7Mapeo de locale actual de herramientas:'
+        - '&#60A5FAWOODEN_PICKAXE: &#10B981{wooden_pickaxe}'
+        - '&#60A5FADIAMOND_AXE: &#10B981{diamond_axe}'
+        - '&#60A5FANETHERITE_SHOVEL: &#10B981{netherite_shovel}'
+        - '&7Fuente: &#FCD34Dmessages_*.yml &8» &#FCD34Dtool-names'
+      localized-enchantments:
+        material: ENCHANTED_BOOK
+        title: '&#A855F7&lNombres de Encantamientos Localizados'
+        lore:
+        - '&7Nombres leídos del archivo de idioma:'
+        - '&#D8B4FEEFFICIENCY: &#10B981{efficiency}'
+        - '&#D8B4FEUNBREAKING: &#10B981{unbreaking}'
+        - '&#D8B4FEFORTUNE: &#10B981{fortune}'
+        - '&7Fuente: &#FCD34Dmessages_*.yml &8» &#FCD34Denchantments'
+      progress-bars:
+        material: COMPASS
+        title: '&#F59E0B&lVista Previa de Barra de Progreso'
+        # Las muestras son porcentajes usados para renderizar barras demo en este ítem.
+        # Los valores fuera de 0-100 se ajustan automáticamente.
+        samples: [25, 60, 95]
+        # Mantén estos marcadores en el lore para el renderizado correcto:
+        # {sample_1_percent} {sample_1_bar} {sample_2_percent} {sample_2_bar} {sample_3_percent} {sample_3_bar} {unit}
+        lore:
+        - '&#FCD34D{sample_1_percent}% &8» {sample_1_bar}'
+        - '&#FCD34D{sample_2_percent}% &8» {sample_2_bar}'
+        - '&#FCD34D{sample_3_percent}% &8» {sample_3_bar}'
+        - '&7Unidad: &f{unit}'
+      ability-states:
+        material: BLAZE_POWDER
+        title: '&#10B981&lVista Previa de Estados de Habilidad'
+        cooldown-demo-seconds: 12
+        # Mantén estos marcadores en el lore para el renderizado correcto:
+        # {self_repair} {auto_smelt} {telepathy} {active} {cooldown} {blocked} {cooldown_seconds}
+        lore:
+        - '&#6EE7B7{self_repair} &8» {active}'
+        - '&#6EE7B7{auto_smelt} &8» {cooldown} &8(&#F59E0B{cooldown_seconds}s&8)'
+        - '&#6EE7B7{telepathy} &8» {blocked}'
+      evolution-lore:
+        material: BOOK
+        title: '&#14B8A6&lVista Previa de Lore de Evolución'
+        lore:
+        - '&7Formato desde la configuración:'
+        - '{progress_line}'
+        - ' &8 '
+        - '&7Ejemplo de encantamiento: {enchant_line}'
+        - '&7Los ejemplos y etiquetas de estado están localizados'

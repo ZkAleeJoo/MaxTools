@@ -1,0 +1,181 @@
+#   _____                 ____  __.__                
+#  /     \ _____  ___  __|    |/ _|__| ____    ____  
+# /  \ /  \\__  \ \  \/  /      < |  |/    \  / ___\ 
+# /    Y    \/ __ \_>    <|    |  \|  |   |  \/ /_/  >
+# \____|__  (____  /__/\_ \____|__ \__|___|  /\___  / 
+#        \/     \/      \/       \/       \//_____/  
+
+# Si tienes alguna pregunta o problema, puedes consultar en el servidor de soporte: https://discord.gg/Vr46JHm2kd
+# Recuerda no borrar ninguna línea de código.
+# Para problemas, errores, ideas o sugerencias, puedes comunicarte en el servidor de Discord.
+# Esta plantilla interna se copia a /plugins/MaxTools/language_profiles/config_es.yml si el perfil no existe.
+# Edita language_profiles/config_es.yml para personalizar la configuración en español.
+general:
+  language: es
+  # Cuando es verdadero, cambiar el idioma desde /met lang intercambia config.yml + menus.yml según el perfil de idioma.
+  # Los perfiles editables por admins están en /plugins/MaxTools/language_profiles/.
+  # Si un perfil aún no existe, el plugin lo crea desde la plantilla interna incluida.
+  # Edita language_profiles/config_es.yml y language_profiles/menus_es.yml para personalizaciones en español.
+  language-profile-sync: true
+  prefix: '&#222DF5&lMaxTools &8» '
+  # Modo de salida predeterminado para /met toolinfo:
+  # false = chat de texto heredado, true = interfaz gráfica (igual que /met toolinfo gui).
+  # Los jugadores aún pueden forzar el modo por uso con /met toolinfo <gui|text>.
+  toolinfo-gui-default: false
+  update-check: true
+  bstats: true
+
+discord:
+  enabled: false
+  webhook-url: ''
+  # Nombre visible usado por el placeholder {server} en los mensajes webhook.
+  # Cambialo para evitar mostrar el nombre del software del servidor (por ejemplo: Paper).
+  server-name: 'MaxTools'
+  # Anulación opcional de la identidad del webhook.
+  # Déjelo en blanco para usar el nombre/avatar predeterminado del webhook de Discord.
+  username: 'MaxTools'
+  avatar-url: ''
+  allowed-mentions:
+    # Vacio = no hacer ping a @everyone, roles o usuarios desde las templates.
+    # Valores validos: everyone, roles, users
+    parse: []
+    replied-user: false
+  queue:
+    # Max pending Discord tasks in memory; oldest are discarded when full.
+    max-pending: 256
+  events:
+    milestone-unlocked: true
+    ability-unlocked: true
+  # Mensajes legacy. Se usan cuando discord.embeds.enabled es false.
+  # Placeholders: {player}, {player_uuid}, {tool}, {tool_type}, {blocks}, {ability}, {reward}, {timestamp}, {server}, {server_software}, {plugin}
+  templates:
+    milestone-unlocked: '**{player}** desbloqueo un hito con **{tool}** en **{blocks}** bloques (`{timestamp}`) — recompensa: **{ability}**'
+    ability-unlocked: '**{player}** desbloqueo la habilidad **{ability}** en **{tool}** en **{blocks}** bloques (`{timestamp}`)'
+    test-message: 'Mensaje de prueba de **{player}** con **{tool}** en **{blocks}** bloques (`{timestamp}`)'
+  embeds:
+    enabled: true
+    # Todos los valores de los embeds aceptan los placeholders listados arriba.
+    milestone-unlocked:
+      enabled: true
+      content: ''
+      title: 'Hito desbloqueado'
+      description: '**{player}** llego a **{blocks}** bloques con **{tool}**.'
+      color: '#F59E0B'
+      url: ''
+      timestamp: true
+      author:
+        name: '{server}'
+        url: ''
+        icon-url: ''
+      thumbnail-url: 'https://mc-heads.net/avatar/{player}/128'
+      image-url: ''
+      footer:
+        text: 'Recompensa: {reward}'
+        icon-url: ''
+      fields:
+        - name: 'Jugador'
+          value: '{player}'
+          inline: true
+        - name: 'Herramienta'
+          value: '{tool}'
+          inline: true
+        - name: 'Bloques'
+          value: '{blocks}'
+          inline: true
+    ability-unlocked:
+      enabled: true
+      content: ''
+      title: 'Habilidad desbloqueada'
+      description: '**{player}** desbloqueo **{ability}** en **{tool}**.'
+      color: '#8B5CF6'
+      url: ''
+      timestamp: true
+      author:
+        name: '{server}'
+        url: ''
+        icon-url: ''
+      thumbnail-url: 'https://mc-heads.net/avatar/{player}/128'
+      image-url: ''
+      footer:
+        text: 'MaxTools Evolution'
+        icon-url: ''
+      fields:
+        - name: 'Habilidad'
+          value: '{ability}'
+          inline: true
+        - name: 'Herramienta'
+          value: '{tool}'
+          inline: true
+        - name: 'Bloques'
+          value: '{blocks}'
+          inline: true
+    test-message:
+      enabled: true
+      content: ''
+      title: 'Prueba de Discord Webhook'
+      description: 'Si puedes ver esto, las notificaciones de Discord estan configuradas correctamente.'
+      color: '#22C55E'
+      url: ''
+      timestamp: true
+      author:
+        name: '{server}'
+        url: ''
+        icon-url: ''
+      thumbnail-url: ''
+      image-url: ''
+      footer:
+        text: 'Enviado por {player}'
+        icon-url: ''
+      fields:
+        - name: 'Emisor'
+          value: '{player}'
+          inline: true
+        - name: 'Herramienta'
+          value: '{tool}'
+          inline: true
+
+# Agrega líneas de lore personalizadas para cada encantamiento presente actualmente en las herramientas evolucionadas.
+# Placeholders: {enchant}, {key}, {level}
+evolution-lore:
+  enabled: true
+  line-format: ' &#00FFFF{enchant} &8» &#FFD700Lvl. {level}'
+  tiers:
+  - Común
+  - Raro
+  - Épico
+  - Mítico
+  - Legendario
+  states:
+    active: '&#00FF00ACTIVO'
+    cooldown: '&#FFA500EN ESPERA'
+    blocked: '&#FF0000BLOQUEADO'
+  sections:
+    header:
+      enabled: true
+      top: '&#555555&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+      bottom: '&#555555&m━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+    tier:
+      enabled: true
+      mode: milestones # milestones | percent
+      format: '&7Rareza: &f{tier}'
+    progress:
+      enabled: true
+      bar-length: 10
+      filled-char: ▰
+      empty-char: ▱
+      # Optimización de actualización de lore:
+      # 1 = cada bloque (más preciso, más carga).
+      # 5 = cada 5 bloques + cambios de %/meta (recomendado).
+      update-interval-blocks: 5
+      format: '&7Progreso: &8[{bar}&8] &8(&#00FFD1{percent}%&8) &7[{current}/{target}]'
+    abilities:
+      enabled: true
+      show-locked: true
+      title: '&7Habilidades'
+      line-format: ' &#D8B4FE{ability} &8» {ability_state} {cooldown}'
+      cooldown-time-format: seconds # seconds | mm:ss
+      cooldown-format: '&8(&#FFA500{cooldown}s&8)'
+    enchantments:
+      enabled: true
+      title: '&#3B82F6Encantamientos'
+      line-format: ' &#60A5FA{enchant} &8» &#FCD34DLvl. {level}'
