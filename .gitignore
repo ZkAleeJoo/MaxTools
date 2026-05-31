@@ -1,6 +1,6 @@
-.mvn/
-target/
 .vscode/
-src/test/
+target/
 pom.xml
+src/test/
 .github/
+src/main/resources/plugin.yml
