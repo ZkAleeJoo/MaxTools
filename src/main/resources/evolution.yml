@@ -1,0 +1,283 @@
+#   _____                 ____  __.__                
+#  /     \ _____  ___  __|    |/ _|__| ____    ____  
+# /  \ /  \\__  \ \  \/  /      < |  |/    \  / ___\ 
+# /    Y    \/ __ \_>    <|    |  \|  |   |  \/ /_/  >
+# \____|__  (____  /__/\_ \____|__ \__|___|  /\___  / 
+#        \/     \/      \/       \/       \//_____/  
+
+# If you have any questions or problems, you can ask on the support server: https://discord.gg/Vr46JHm2kd
+# Remember not to delete any line of code.
+# For problems, bugs, ideas or suggestions you can do it on the discord server.
+
+# ============================================================================
+# MaxTools - Evolution settings
+# ============================================================================
+# 1) tracked-tools:
+#    Tools that can gain levels and special abilities.
+#
+# 2) milestones:
+#    Each milestone is activated when the tool reaches at least X mined blocks.
+#    You can grant enchantments and/or unlock abilities.
+#
+# 3) special-abilities:
+#    Master catalog of abilities. The id (example: self-repair) is used in
+#    milestones -> unlock-abilities.
+#
+# Common options inside each ability:
+# - type: Internal ability type (do not change unless you know what you are doing).
+# - enabled: true/false to enable or disable the ability globally.
+# - trigger: When the ability tries to activate (BLOCK_BREAK, WALK_DISTANCE, TICK).
+# - chance: Probability per trigger (0.0 = never, 1.0 = always).
+# - amount: Main power value of the ability (meaning depends on each ability).
+# - distance-blocks: Blocks walked before a WALK_DISTANCE trigger can activate.
+# - cooldown-seconds: Cooldown between activations.
+# - compatible-with-mending: If false, ability does not work on tools with Mending.
+#
+# 4) counting:
+#    Rules that control which broken blocks count toward evolution progress.
+#    - require-preferred-tool: if true, only blocks that match the proper tool will count.
+#    - strict-tool-category-match: if true, also enforces tool category tags (pickaxe/axe/shovel).
+#    - whitelist-materials: if not empty, ONLY these materials will count.
+#    - blacklist-materials: materials that never count.
+#
+# 5) progress-display:
+#    Appends a configurable counter to the tool name while preserving the original/custom name.
+#    Placeholders: {current}, {target}, {unit}
+#    refresh-base-name-on-rename:
+#      false -> keep original base name forever.
+#      true  -> if player/plugin renames tool later, use that new name as base.
+tracked-tools:
+  - WOODEN_PICKAXE
+  - STONE_PICKAXE
+  - IRON_PICKAXE
+  - GOLDEN_PICKAXE
+  - DIAMOND_PICKAXE
+  - NETHERITE_PICKAXE
+  - WOODEN_AXE
+  - STONE_AXE
+  - IRON_AXE
+  - GOLDEN_AXE
+  - DIAMOND_AXE
+  - NETHERITE_AXE
+  - WOODEN_SHOVEL
+  - STONE_SHOVEL
+  - IRON_SHOVEL
+  - GOLDEN_SHOVEL
+  - DIAMOND_SHOVEL
+  - NETHERITE_SHOVEL
+
+# --------------------------------------------------
+#  Counting
+# --------------------------------------------------
+counting:
+  require-preferred-tool: true
+  strict-tool-category-match: true
+  # Optional allow-list. Leave empty to allow every material (except blacklist).
+  whitelist-materials: []
+  # Default anti-farm blacklist to avoid leveling with leaves/flowers/crops/grass/etc.
+  # If this list is empty, plugin fallback defaults are used.
+  # Add materials here to fully override that default behavior.
+  blacklist-materials: []
+
+# --------------------------------------------------
+#  Progress Display
+# --------------------------------------------------
+progress-display:
+  enabled: true
+  format: "&8« &#FFD700{current} &8/ &#FFAA00{target} &7{unit} &8»"
+  # Optional format when the tool reached the final milestone.
+  completed-format: "&8« &#55FF55&lMAXED &8»"
+  refresh-base-name-on-rename: false
+
+# --------------------------------------------------
+#  Milestones
+# --------------------------------------------------
+#Milestones are evaluated when the counter reaches OR exceeds the configured blocks.
+#Supported enchantment names:
+#  AQUA_AFFINITY, BANE_OF_ARTHROPODS, BLAST_PROTECTION, BREACH, CHANNELING,
+#  DENSITY, DEPTH_STRIDER, EFFICIENCY, FEATHER_FALLING, FIRE_ASPECT, FIRE_PROTECTION,
+#  FLAME, FORTUNE, FROST_WALKER, IMPALING, INFINITY, KNOCKBACK, LOOTING, LOYALTY,
+#  LUCK_OF_THE_SEA, LURE, MENDING, MULTISHOT, PIERCING, POWER, PROJECTILE_PROTECTION,
+#  PROTECTION, PUNCH, QUICK_CHARGE, RESPIRATION, RIPTIDE, SHARPNESS, SILK_TOUCH,
+#  SMITE, SOUL_SPEED, SWEEPING_EDGE, THORNS, UNBREAKING, VANISHING_CURSE,
+#  BINDING_CURSE, WIND_BURST (plus valid Bukkit aliases like DURABILITY/UNBREAKING).
+milestones:
+  milestone-1:
+    blocks: 100
+    enchantment: EFFICIENCY
+    level: 3
+  milestone-2:
+    blocks: 300
+    unlock-abilities:
+      - self-repair
+  milestone-3:
+    blocks: 750
+    enchantment: DURABILITY
+    level: 2
+  milestone-4:
+    blocks: 1000
+    unlock-abilities:
+      - telepathy
+  milestone-5:
+    blocks: 1200
+    enchantment: EFFICIENCY
+    level: 4
+  milestone-6:
+    blocks: 2000
+    unlock-abilities:
+      - auto-smelt
+  milestone-7:
+    blocks: 2500
+    unlock-abilities:
+      - xp-boost
+  milestone-8:
+    blocks: 3000
+    enchantment: FORTUNE
+    level: 4
+  milestone-9:
+    blocks: 3100
+    enchantment: DURABILITY
+    level: 4
+  milestone-10:
+    blocks: 3500
+    enchantment: EFFICIENCY
+    level: 6
+  milestone-11:
+    blocks: 5000
+    unlock-abilities:
+      - vein-miner
+  milestone-12:
+    blocks: 6000
+    enchantment: FORTUNE
+    level: 5
+  milestone-13:
+    blocks: 9000
+    unlock-abilities:
+      - drill
+
+# --------------------------------------------------
+#  Special Abilities
+# --------------------------------------------------
+special-abilities:
+  #Repairs durability after walking enough blocks with the tool in hand.
+  self-repair:
+    type: SELF_REPAIR
+    enabled: true
+    trigger: WALK_DISTANCE
+    chance: 1.0
+    amount: 10
+    distance-blocks: 10
+    cooldown-seconds: 10
+    require-main-hand: true
+    compatible-with-mending: true
+
+  #Smelts RAW_IRON / RAW_GOLD / RAW_COPPER / ANCIENT_DEBRIS / IRON_ORE / GOLD_ORE / COPPER_ORE drops automatically.
+  auto-smelt:
+    type: AUTO_SMELT
+    enabled: true
+    chance: 1.0
+    amount: 1
+    cooldown-seconds: 0
+    compatible-with-mending: true
+
+  #Sends mined drops directly to the player inventory.
+  telepathy:
+    type: TELEPATHY
+    enabled: true
+    chance: 1.0
+    amount: 1
+    cooldown-seconds: 0
+    compatible-with-mending: true
+
+  #3x3 mining for high-tier pickaxes and shovels (diamond/netherite).
+  #amount=1 means 3x3. amount=2 means 5x5, etc.
+  drill:
+    type: DRILL
+    enabled: true
+    chance: 1.0
+    amount: 1
+    cooldown-seconds: 0
+    compatible-with-mending: true
+
+  #Breaks connected blocks of the same material (ideal for ore veins).
+  #amount = maximum extra connected blocks (the original block is not counted in amount).
+  vein-miner:
+    type: VEIN_MINER
+    enabled: true
+    chance: 1.0
+    amount: 8
+    cooldown-seconds: 0
+    compatible-with-mending: true
+    #Recommended: keep this whitelist limited to ore materials to prevent abuse.
+    material-whitelist:
+      - COAL_ORE
+      - DEEPSLATE_COAL_ORE
+      - IRON_ORE
+      - DEEPSLATE_IRON_ORE
+      - COPPER_ORE
+      - DEEPSLATE_COPPER_ORE
+      - GOLD_ORE
+      - DEEPSLATE_GOLD_ORE
+      - REDSTONE_ORE
+      - DEEPSLATE_REDSTONE_ORE
+      - LAPIS_ORE
+      - DEEPSLATE_LAPIS_ORE
+      - EMERALD_ORE
+      - DEEPSLATE_EMERALD_ORE
+      - DIAMOND_ORE
+      - DEEPSLATE_DIAMOND_ORE
+      - NETHER_QUARTZ_ORE
+      - NETHER_GOLD_ORE
+      - ANCIENT_DEBRIS
+
+  #Multiplies natural xp from the broken block.
+  #amount=2 -> x2 xp, amount=3 -> x3 xp...
+  xp-boost:
+    type: XP_BOOST
+    enabled: true
+    chance: 1.0
+    amount: 2
+    cooldown-seconds: 0
+    compatible-with-mending: true
+    # Optional: if configured, xp-boost will only apply when breaking these materials.
+    # Use exact Material enum names (e.g. COAL_ORE, DEEPSLATE_DIAMOND_ORE).
+    # Leave empty or remove the key to apply xp-boost to any block with natural XP.
+    material-whitelist: []
+
+  #Gives passive Haste while holding the evolved tool.
+  #amount=1 -> Haste I, amount=2 -> Haste II...
+  haste:
+    type: HASTE
+    enabled: true
+    chance: 1.0
+    amount: 1
+    cooldown-seconds: 0
+    compatible-with-mending: true
+
+  # Utility ability: restores hunger on proc and may apply a brief Saturation effect when capped.
+  # amount is the hunger points restored (2 points = 1 full shank).
+  saturation-pulse:
+    type: SATURATION_PULSE
+    enabled: true
+    chance: 0.2
+    amount: 2
+    cooldown-seconds: 6
+    compatible-with-mending: true
+
+  # Temporarily boosts compatible ore drops for a short window after proc.
+  # amount is the base multiplier and max-multiplier is a hard cap.
+  luck-surge:
+    type: LUCK_SURGE
+    enabled: true
+    chance: 0.2
+    amount: 2
+    max-multiplier: 3.0
+    cooldown-seconds: 8
+    compatible-with-mending: true
+    material-whitelist:
+      - REDSTONE_ORE
+      - DEEPSLATE_REDSTONE_ORE
+      - LAPIS_ORE
+      - DEEPSLATE_LAPIS_ORE
+      - DIAMOND_ORE
+      - DEEPSLATE_DIAMOND_ORE
